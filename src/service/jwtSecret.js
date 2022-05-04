@@ -1,0 +1,1 @@
+module.exports = process.env.JWTSECRET_PASSWORD
