@@ -1,10 +1,13 @@
 const { knex } = require('../database/connection');
-const { encryptPasswordValue } = require('../utils/handlePassword')
+const { encryptPasswordValue } = require('../utils/handlePassword');
+const schemaVerifyInfo = require('../middlewares/schemaVerifyInfo');
 
 const signUp = async (req, res) => {
     const { email, senha } = req.body;
 
     try {
+        await schemaVerifyInfo.validate(req.body)
+
         const userInfo = await knex('users').where({ email }).first();
 
         if (userInfo) return res.status(400).json("O email já existe");

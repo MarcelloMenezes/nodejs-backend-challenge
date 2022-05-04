@@ -1,5 +1,6 @@
 const { knex } = require('../database/connection');
-const { comparePasswords } = require('../utils/handlePassword')
+const { comparePasswords } = require('../utils/handlePassword');
+const schemaVerifyInfo = require('../middlewares/schemaVerifyInfo');
 const jwt = require('jsonwebtoken');
 const jwtSecret = require('../service/jwtSecret');
 
@@ -7,6 +8,8 @@ const login = async (req, res) => {
     const { email, senha } = req.body;
 
     try {
+       await schemaVerifyInfo.validate(req.body)
+
         const user = await knex('users').where({ email }).first();
 
         if (!user) return res.status(404).json('O usuario não foi encontrado');

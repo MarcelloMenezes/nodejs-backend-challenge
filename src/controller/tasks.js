@@ -1,16 +1,17 @@
 const { knex } = require('../database/connection');
+const schemaVerifyTask = require('../middlewares/schemaVerifyTask');
 
 const registerTask = async (req, res) => {
     const { description, deadline } = req.body;
     const { user } = req;
 
     try {
-        const insertion_date = new Date()
+        const { task_date } = await schemaVerifyTask.validate(req.body)
 
         const task = await knex('tasks').insert({
             description,
-            insertion_date,
-            update_date: insertion_date,
+            insertion_date: task_date,
+            update_date: task_date,
             deadline,
             user_id: user.id
         });
