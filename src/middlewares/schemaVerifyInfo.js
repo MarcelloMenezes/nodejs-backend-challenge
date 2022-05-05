@@ -2,7 +2,7 @@ const yup = require('./settings')
 
 const schemaVerifyInfo = yup.object().shape({
     email: yup.string().required().email(),
-    senha: yup.string().required()
+    password: yup.string().required()
 })
 
 module.exports = schemaVerifyInfo

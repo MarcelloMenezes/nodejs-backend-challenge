@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const jwtSecret = require('../service/jwtSecret');
 
 const login = async (req, res) => {
-    const { email, senha } = req.body;
+    const { email, password } = req.body;
 
     try {
        await schemaVerifyInfo.validate(req.body)
@@ -14,13 +14,13 @@ const login = async (req, res) => {
 
         if (!user) return res.status(404).json('O usuario não foi encontrado');
 
-        const correctPassword = await comparePasswords(senha, user.password);
+        const correctPassword = await comparePasswords(password, user.password);
 
         if (!correctPassword) return res.status(400).json("Email e senha não conferem");
 
         const token = jwt.sign({ id: user.id }, jwtSecret, { expiresIn: '8h' });
 
-        const { password, ...infoUser } = user;
+        const { password: _, ...infoUser } = user;
 
         return res.status(200).json({
             user: infoUser,

@@ -3,7 +3,7 @@ const { encryptPasswordValue } = require('../utils/handlePassword');
 const schemaVerifyInfo = require('../middlewares/schemaVerifyInfo');
 
 const signUp = async (req, res) => {
-    const { email, senha } = req.body;
+    const { email, password } = req.body;
 
     try {
         await schemaVerifyInfo.validate(req.body)
@@ -12,7 +12,7 @@ const signUp = async (req, res) => {
 
         if (userInfo) return res.status(400).json("O email já existe");
 
-        const passwordHash = await encryptPasswordValue(senha);
+        const passwordHash = await encryptPasswordValue(password);
 
         const user = await knex('users').insert({
             email,
