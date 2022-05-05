@@ -1,4 +1,6 @@
 const { knex } = require('../database/connection');
+const { viewPage } = require('../utils/handlePage');
+const { formatDate } = require('../utils/handleDate');
 const schemaVerifyTask = require('../middlewares/schemaVerifyTask');
 
 const registerTask = async (req, res) => {
@@ -62,8 +64,42 @@ const taskUpdate = async (req, res) => {
     }
 }
 
+const listTasks = async (req, res) => {
+    let { limit = 5, page = 1 } = req.query;
+    const { user } = req;
+
+    try {
+        let tasks
+        if (user.email === process.env.EMAIL_ADM) {
+            const currentPage = viewPage(limit, page)
+
+            tasks = await knex('tasks')
+                .join('users', 'users.id', '=', 'tasks.user_id')
+                .orderBy('deadline')
+                .select('users.email', 'tasks.description', 'tasks.deadline')
+                .limit(limit)
+                .offset(currentPage)
+
+        } else {
+            tasks = await knex('tasks')
+                .where({ user_id: user.id, completed: false })
+                .orderBy('deadline')
+                .select('id', 'description', 'deadline')
+        }
+
+        if (!tasks.length) return res.status(400).json("Não foi possível listar tarefas");
+        
+        formatDate(tasks)
+
+        return res.status(200).json(tasks);
+    } catch (error) {
+        return res.status(400).json(error.message);
+    }
+}
+
 module.exports = {
     registerTask,
     taskCompleted,
-    taskUpdate
+    taskUpdate,
+    listTasks
 }
