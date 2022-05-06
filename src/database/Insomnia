@@ -1,0 +1,294 @@
+{
+    "_type": "export",
+    "__export_format": 4,
+    "__export_date": "2022-05-05T21:35:21.551Z",
+    "__export_source": "insomnia.desktop.app:v2021.7.2",
+    "resources": [
+        {
+            "_id": "req_76b8639d0d694fccacd3187cde8a33ea",
+            "parentId": "wrk_ae2994ea8b264500b010af36ee4b13ab",
+            "modified": 1651770252919,
+            "created": 1651602565617,
+            "url": "http://localhost:8000/tasks/?page=3",
+            "name": "list tasks",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [],
+            "headers": [
+                {
+                    "id": "pair_1d018da91e7349718625a1d5221c3bb9",
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjUxNzcwMjM0LCJleHAiOjE2NTE3OTkwMzR9.0amcASo5pE6ShkzSjP5YoYT_lJ4lWgIvTU4a5G0HR9k",
+                    "description": ""
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1651602565617,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "wrk_ae2994ea8b264500b010af36ee4b13ab",
+            "parentId": null,
+            "modified": 1648818161116,
+            "created": 1648818161116,
+            "name": "Test",
+            "description": "",
+            "scope": "collection",
+            "_type": "workspace"
+        },
+        {
+            "_id": "req_41a88a9262f9407e8cd000129a7b8845",
+            "parentId": "wrk_ae2994ea8b264500b010af36ee4b13ab",
+            "modified": 1651767613718,
+            "created": 1651610436041,
+            "url": "http://localhost:8000/list-tasks/?page=2",
+            "name": "list tasks late",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [],
+            "headers": [
+                {
+                    "id": "pair_1d018da91e7349718625a1d5221c3bb9",
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjUxNzY3NTAzLCJleHAiOjE2NTE3OTYzMDN9.5G3mo9dhHzB2Z5E1ah62KQVgAIj4_IcMkRg3njZYzks",
+                    "description": ""
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1651575688309.5,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_e7ef3036db9d40ccb5bf444dbf80d693",
+            "parentId": "wrk_ae2994ea8b264500b010af36ee4b13ab",
+            "modified": 1651767565378,
+            "created": 1651548811002,
+            "url": "http://localhost:8000/task/6",
+            "name": "update completed",
+            "description": "",
+            "method": "PUT",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"completed\": true\n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_e5380430ff6b4242ae8b550777d587c0"
+                },
+                {
+                    "id": "pair_04183535a1f94e16abb23405f24e201d",
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjUxNzE0NzA5LCJleHAiOjE2NTE3NDM1MDl9.SXRR2haxY9Tt1lfQZBO4JGN3P8xQK3sprCYcoic3Agw",
+                    "description": ""
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1651548811002,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_372770b7e80b4342ba9e59853327111d",
+            "parentId": "wrk_ae2994ea8b264500b010af36ee4b13ab",
+            "modified": 1651786413683,
+            "created": 1651589747182,
+            "url": "http://localhost:8000/task-update/7",
+            "name": "update task",
+            "description": "",
+            "method": "PUT",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"description\": \"Atividade de useRef\",\n  \"deadline\": \"2022-05-02\"\n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_e5380430ff6b4242ae8b550777d587c0"
+                },
+                {
+                    "id": "pair_04183535a1f94e16abb23405f24e201d",
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjUxNzIwNDA5LCJleHAiOjE2NTE3NDkyMDl9.QAAYiDNpy7Htld-gcatS-9jGM0aLVIvVeSoiQ3r_Q1I",
+                    "description": ""
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1651529814452.5,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_e9bc8be7c17e4b4fbe8cfe457e522182",
+            "parentId": "wrk_ae2994ea8b264500b010af36ee4b13ab",
+            "modified": 1651767479386,
+            "created": 1651510817903,
+            "url": "http://localhost:8000/task",
+            "name": "register task",
+            "description": "",
+            "method": "POST",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"description\": \"Aula de português\",\n  \"deadline\": \"2-9-1\"\n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_7b2123508919448781c69afa09385132"
+                },
+                {
+                    "id": "pair_97d3a2a52a23459f92a3f00c32749c04",
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjUxNzA5NDEyLCJleHAiOjE2NTE3MzgyMTJ9.C2O6UAdcj_tKO2sKU5eRAHTqRTZEqlWlBmgD4G2aXHg",
+                    "description": ""
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1651510817903,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_35ac529d6e384d22b7c330db3f9cb837",
+            "parentId": "wrk_ae2994ea8b264500b010af36ee4b13ab",
+            "modified": 1651770231255,
+            "created": 1648819610231,
+            "url": "http://localhost:8000/login",
+            "name": "login",
+            "description": "",
+            "method": "POST",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"email\": \"marcelinho.augusto@gmail.com\",\n\t\"password\": \"123\"\n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_aeb1e4c67ebd4dc09d4c7288ceb84a7d"
+                },
+                {
+                    "id": "pair_e67f25b90f1944219e24abddb05c92dc",
+                    "name": "",
+                    "value": "",
+                    "description": ""
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1648819610231,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_b4b0df08de584513b75fb27ffcbef417",
+            "parentId": "wrk_ae2994ea8b264500b010af36ee4b13ab",
+            "modified": 1651767693793,
+            "created": 1648818250811,
+            "url": "http://localhost:8000/sign-up",
+            "name": "sign-up",
+            "description": "",
+            "method": "POST",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"email\": \"lucas@gmail.com\",\n\t\"password\": \"123\"\n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_477972c0dfb84d50ab638ecf5caeb810"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1648818250811,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "env_1d830bcd09537af40def651600113b4bb5e42cba",
+            "parentId": "wrk_ae2994ea8b264500b010af36ee4b13ab",
+            "modified": 1648818161383,
+            "created": 1648818161383,
+            "name": "Base Environment",
+            "data": {},
+            "dataPropertyOrder": null,
+            "color": null,
+            "isPrivate": false,
+            "metaSortKey": 1648818161383,
+            "_type": "environment"
+        },
+        {
+            "_id": "jar_1d830bcd09537af40def651600113b4bb5e42cba",
+            "parentId": "wrk_ae2994ea8b264500b010af36ee4b13ab",
+            "modified": 1648818161596,
+            "created": 1648818161596,
+            "name": "Default Jar",
+            "cookies": [],
+            "_type": "cookie_jar"
+        },
+        {
+            "_id": "spc_c99c0b68ff9e49be9bbaa2c09bfd0ed4",
+            "parentId": "wrk_ae2994ea8b264500b010af36ee4b13ab",
+            "modified": 1648818161118,
+            "created": 1648818161118,
+            "fileName": "Test",
+            "contents": "",
+            "contentType": "yaml",
+            "_type": "api_spec"
+        }
+    ]
+}

@@ -1,87 +1,317 @@
-# Desafio para backend em NodeJS
+# **TESTE UBISTART**
 
-Bem-vindo ao desafio técnico para backend em NodeJS da Ubistart!! :raised_hands:
+## Passo a passo para utilizar:
 
-![](./docs/celebration.gif)
+1. Baixar o repositório do GitHub [Link do repositório](https://github.com/MarcelloMenezes/nodejs-backend-challenge)
+2. Abrir repositório no Visual Studio Code
+3. Executar Npm i ou Yarn i no Git bash
+4. Executar Npm start ou Yarn start no Git bash
+5. Abrir o MySQL ou um gerenciador de banco de dados da sua preferência, logo em seguida, execute o seguinte código [Link do Schema](https://github.com/MarcelloMenezes/nodejs-backend-challenge/blob/main/src/database/schema.sql), com isso criará duas tabelas: usuários e tarefas
+6. Adicionar as informações do database no arquivo .env, coloquei um demonstrativo no repositório, [Link do exemplo](https://github.com/MarcelloMenezes/nodejs-backend-challenge/blob/main/.env.example), neste arquivo já passei o email padrão do administrador
+7. Abrir o Insomnia ou Postman e verificar as rotas [Link das rotas](https://github.com/MarcelloMenezes/nodejs-backend-challenge/blob/main/src/routes/routes.js), lembrando que o servidor está rodando na porta 8000
 
-## :man_technologist: &nbsp;O desafio&nbsp; :woman_technologist:
+---
 
-Para a resolução deste desafio, esperamos que você desenvolva uma API Rest que contemple as estórias de usuário abaixo. Nenhuma interface de usuário deve ser desenvolvida.
+## Usuário
 
-* Como um usuário eu quero criar uma conta então poderei gerenciar meus itens de TODO
-  - Dado que estou criando minha conta, quero informar e-mail e senha
+### O que o usuário pode fazer:
 
-* Como um usuário eu quero poder entrar na plataforma
+- Fazer login
+- Fazer cadastro
+- Cadastrar tarefa
+- Atualizar tarefa
+- Atualizar tarefa para concluída
+- Listar tarefas
 
-* Como um usuário eu quero inserir um item de TODO, assim poderei adicionar um TODO a minha lista de tarefas
+### O que o usuário não pode fazer:
 
-  - A aplicação deve armazenar a data e hora da inserção
-  - Informar descrição e prazo da tarefa
+- Não pode alterar tarefa concluída
 
-* Como um usuário eu quero finalizar um TODO, então poderei colocar a tarefa como feita
+---
 
-  - A aplicação deve armazenar a data e hora de quando a tarefa foi finalizada
+## Administrador
 
-* Como um usuário eu quero editar um TODO, então poderei atualizar minha lista
- 
-  - A aplicação deve armazenar a data e hora de quando a tarefa foi editada
-  - Posso atualizar descrição e prazo
-  - Um TODO concluído não pode ser atualizado
+### O que o administrador pode fazer:
 
-* Como um usuário eu quero listar todos os meus itens de TODO, assim poderei realizá-los
+- Listar todas as tarefas de todos os usuários
+- Listar tarefas atrasadas de todos os usuários
 
-  - Eu quero listar apenas os **MEUS** itens
-  - Se o TODO está atrasado, então a aplicação deve retornar que o TODO está atrasado
+## Endpoints / Usuário
 
-* Como um administrador eu quero poder entrar na plataforma
+### POST / Login
 
-  - A aplicação deve fornecer um usuario administrador por padrão
+#### Dados enviados
 
-* Como um administrador eu quero listar todos os itens de TODO, assim poderei ver todas as tarefas criadas
+```json=
+{
+	"email": "admin@ubistart.com",
+	"password": "exemplo"
+}
+```
 
-  - A lista deve ser paginada
-  - A lista deve conter o email do usuário, descrição e prazo do TODO
+#### Dados recebidos
+- Sucesso
+```json=
+{
+	"user": {
+		"id": 1,
+		"email": "exemplo"
+	},
+	"token": "exemplo"
+}
+```
 
-* Como um administrador eu quero filtrar a lista de itens de TODO por tarefas atrasadas
+- Erros
 
-  - A lista deve ser paginada
-  - A lista deve conter o email do usuário, descrição e prazo do TODO
+```jsonld=
+"O campo email é obrigatório"
+```
 
-## :wrench: &nbsp;Requisitos técnicos
+```jsonld=
+"O campo senha é obrigatório"
+```
 
-![](./docs/requisitos.gif)
-### Obrigatórios
-
-* Disponibilizar documentação o suficiente para a execução do projeto no README
-* Utilizar banco de dados MySQL
-* Tratar erros
-* Autenticação e autorização via JWT
-
-### Opcionais
-
-* Escrever testes de unidade e integração
-* Documentar decisões tomadas durante o desafio técnico
-* Disponibilizar diagrama da API
-* Utilizar docker
-
-### Observação
-
-Você pode usar qualquer framework de backend para a resolução do problema.
-
-(Exemplo de frameworks: Express, AdonisJS, NestJS)
-
-## :eyes: &nbsp;Avaliação 
-
-![](./docs/avaliacao.gif)
-
-O objetivo principal deste desafio é avaliar as capacidades do candidato em:
-
-* Uso correto e apropriado das camadas da arquitetura do projeto
-* Escrever código limpo
-* Estruturar e armazenar dados de forma performática
+```jsonld=
+"Email e senha não conferem"
+```
 
 
-### Observações
- 
-* Ao terminar o desafio, encaminhe o link do repositório para o email `rh@ubistart.com`
-* Caso você não conclua o desafio no tempo combinado, encaminhe a sua solução para nós com uma seção de `dificuldades` no projeto. O importante é vermos o que você conseguiu construir :v: :grin: 
+### POST / Cadastro
+
+#### Dados enviados
+
+```json=
+{
+	"email": "admin@ubistart.com",
+	"password": "example"
+}
+```
+
+#### Dados recebidos
+- Sucesso
+```json=
+"O usuário foi cadastrado"
+```
+
+- Erros
+
+```jsonld=
+"O campo email é obrigatório"
+```
+
+```jsonld=
+"O campo senha é obrigatório"
+```
+
+```jsonld=
+"O email já existe"
+```
+
+### POST / Cadastrar Tarefa 
+
+#### Dados enviados
+
+```json=
+{
+    "description": "Example",
+    "deadline": "yyyy-mm-dd"
+}
+```
+
+#### Dados recebidos
+- Sucesso
+
+```json=
+"Tarefa cadastrada com sucesso"
+```
+- Erros
+
+```jsonld=
+"O campo descricao é obrigatório"
+```
+```jsonld=
+"O campo prazo da tarefa é obrigatório"
+```
+
+### PUT / Atualizar Tarefa para concluída
+
+#### Dados enviados
+
+```json=
+{
+	"completed": true
+}
+```
+
+#### Dados recebidos
+- Sucesso
+```json=
+"A tarefa foi concluída com sucesso"
+```
+- Erro
+```jsonld=
+"Tarefa já foi concluída, não pode ser atualizada"
+```
+
+### PUT / Atualizar Tarefa
+
+#### Dados enviados
+
+```json=
+{
+    "description": "Example",
+    "deadline": "yyyy-mm-dd"
+}
+```
+
+#### Dados recebidos
+- Sucesso
+```json=
+"A tarefa foi atualizada com sucesso"
+```
+- Erro
+```jsonld=
+"Tarefa já foi concluída, não pode ser atualizada"
+```
+
+### GET / Listar tarefas
+
+Obs: somente do usuário logado
+
+#### Dados recebidos
+- Sucesso
+```json=
+[
+	{
+		"id": 1,
+		"description": "Example",
+		"deadline": "dd-MM-yyyy",
+		"status": "TAREFA ATRASADA!"
+	},
+	{
+		"id": 3,
+		"description": "Example",
+		"deadline": "dd-MM-yyyy",
+		"status": "TAREFA ATRASADA!"
+	},
+	{
+		"id": 2,
+		"description": "Example",
+		"deadline": "dd-MM-yyyy"
+	}
+]
+```
+- Erro
+```jsonls=
+"Não foi possível listar tarefas"
+```
+
+---
+
+## Endpoints / Administrador
+
+### GET / Listar tarefas
+
+Obs: Todos os usuários com paginação
+
+#### Dados recebidos
+- Sucesso(Máximo de 5, pode alterar na URL)
+```json=
+[
+	{
+		"description": "Example",
+		"deadline": "dd-MM-yyyy",
+		"status": "TAREFA ATRASADA!"
+	},
+	{
+		"description": "Example",
+		"deadline": "dd-MM-yyyy",
+		"status": "TAREFA ATRASADA!"
+	},
+	{
+		"description": "Example",
+		"deadline": "dd-MM-yyyy",
+		"status": "TAREFA ATRASADA!"
+	},
+	{
+		"email": "example@example.com",
+		"description": "Example",
+		"deadline": "dd-MM-yyyy"
+	},
+	{
+		"email": "example@example.com",
+		"description": "Example",
+		"deadline": "dd-MM-yyyy"
+	}
+]
+```
+- Erro
+```jsonls=
+"Não foi possível listar tarefas"
+```
+
+### GET / Filtrar tarefas atrasadas
+
+Obs: Lista de todos os usuários com paginação
+
+#### Dados recebidos
+- Sucesso (Máximo de 5, pode alterar na URL)
+```json=
+[
+	{
+		"description": "Example",
+		"deadline": "dd-MM-yyyy",
+		"status": "TAREFA ATRASADA!"
+	},
+	{
+		"description": "Example",
+		"deadline": "dd-MM-yyyy",
+		"status": "TAREFA ATRASADA!"
+	},
+	{
+		"description": "Example",
+		"deadline": "dd-MM-yyyy",
+		"status": "TAREFA ATRASADA!"
+	},
+	{
+		"description": "Example",
+		"deadline": "dd-MM-yyyy",
+		"status": "TAREFA ATRASADA!"
+	},
+	{
+		"description": "Example",
+		"deadline": "dd-MM-yyyy",
+		"status": "TAREFA ATRASADA!"
+	}
+]
+
+```
+- Erros
+
+```jsonld=
+"Apenas administrador pode visualizar"
+```
+
+
+```jsonls=
+"Não foi possível listar tarefas atrasadas"
+```
+
+---
+
+## Tecnologias utilizadas:
+- Javascript
+- Node
+- MySQL
+- Express
+- JWT
+- Bcrypt
+- Dotenv
+- Knex
+- Yup / Yup-locales
+- Nodemon
+- Date-fns
+- Visual Studio Code
+- Insomnia
+- Beekeeper
+- Git
