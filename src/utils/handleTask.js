@@ -1,6 +1,6 @@
 const format = require('date-fns/format')
 
-function formatDate(tasks) {
+function formatTask(tasks) {
     for (let i = 0; i < tasks.length; i++) {
         if (tasks[i].deadline < new Date()) {
             tasks[i].status = "TAREFA ATRASADA!"
@@ -11,4 +11,4 @@ function formatDate(tasks) {
     return tasks
 }
 
-module.exports = { formatDate }
+module.exports = { formatTask }

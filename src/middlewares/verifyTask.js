@@ -17,4 +17,4 @@ const verifyTask = async (req, res, next) => {
     next()
 }
 
-module.exports = verifyTask
+module.exports = verifyTask;
