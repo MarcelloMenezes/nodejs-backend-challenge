@@ -4,8 +4,8 @@
 
 1. Baixar o repositório do GitHub [Link do repositório](https://github.com/MarcelloMenezes/nodejs-backend-challenge)
 2. Abrir repositório no Visual Studio Code
-3. Executar Npm i ou Yarn i no Git bash
-4. Executar Npm start ou Yarn start no Git bash
+3. Executar npm i ou yarn add no Git bash
+4. Executar npm start ou yarn start no Git bash
 5. Abrir o MySQL ou um gerenciador de banco de dados da sua preferência, logo em seguida, execute o seguinte código [Link do Schema](https://github.com/MarcelloMenezes/nodejs-backend-challenge/blob/main/src/database/schema.sql), com isso criará duas tabelas: usuários e tarefas
 6. Adicionar as informações do database no arquivo .env, coloquei um demonstrativo no repositório, [Link do exemplo](https://github.com/MarcelloMenezes/nodejs-backend-challenge/blob/main/.env.example), neste arquivo já passei o email padrão do administrador
 7. Abrir o Insomnia ou Postman e verificar as rotas [Link das rotas](https://github.com/MarcelloMenezes/nodejs-backend-challenge/blob/main/src/routes/routes.js), lembrando que o servidor está rodando na porta 8000
